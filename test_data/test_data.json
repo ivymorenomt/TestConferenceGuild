@@ -1,0 +1,5 @@
+[
+    { "username": "invaliduser", "password": "invalidpassword", "expectedResult": "Your username is invalid!" },
+    { "username": "tomsmith", "password": "SuperSecretPassword!", "expectedResult": "You logged into a secure area!" }
+    
+]  

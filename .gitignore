@@ -1,0 +1,9 @@
+# Ignore all files
+.pytest_cache/
+.vscode/
+js_project/node_modules/
+js_project/chrome_win32/
+js_project/package.json
+js_project/package-lock.json
+Python_projects/chrome_win32/
+Python_projects/python_project/__pycache__
