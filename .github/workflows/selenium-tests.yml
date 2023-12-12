@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
     - name: Run Selenium tests  
       run: |
-        python Python_projects/python_project/test_checkbox.py
+         python TestConferenceGuild/Python_projects/python_project/test_checkbox.py
