@@ -1,22 +1,25 @@
-name: Selenium Tests
+name: Selenium Tests 
 
 on:
-  push:
+  push: 
     branches:
       - main
 
 jobs:
+
   run-tests:
+
     runs-on: ubuntu-latest
 
-    name: Run Selenium tests
     steps:
-      - uses: actions/checkout@v2
 
-      - uses: actions/setup-python@v2
-        with:
-          python-version: 3.8
+    - uses: actions/checkout@v2
 
-      - name: Run Selenium tests
-        run: |
-          python Python_projects/python_project/test_checkbox.py
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+
+    - name: Run Selenium tests  
+      run: |
+        python Python_projects/python_project/test_checkbox.py
