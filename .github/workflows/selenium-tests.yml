@@ -14,4 +14,4 @@ jobs:
     steps:
     - name: Run Selenium tests  
       run: |
-        python Python_projects/python_project/test_checkbox.py
+        python ./Python_projects/python_project/test_checkbox.py
