@@ -15,4 +15,4 @@ jobs:
 
     - name: Run Selenium tests  
       run: |
-         python TestConferenceGuild/Python_projects/python_project/test_checkbox.py
+         python test_checkbox.py
