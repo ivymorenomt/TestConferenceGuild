@@ -9,20 +9,16 @@ jobs:
   run-tests:
     runs-on: ubuntu-latest
 
+    name: Run Selenium tests
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: 3.11
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
 
-    - name: Install dependencies
-      run: |
-        pip install -r requirements.txt
-
-    - name: Run Selenium tests
-      run: |
-        python Python_projects/python_project/test_checkbox.py
-
+      - name: Run Selenium tests
+        run: |
+          python Python_projects/python_project/test_checkbox.py
