@@ -1,19 +1,15 @@
-name: Selenium Tests 
-
-on:
-  push: 
-    branches:
-      - main
-
+name: learn-github-actions
+run-name: ${{ github.actor }} is learning GitHub Actions
+on: [push]
 jobs:
-  run-tests:
+  check-bats-version:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+      - run: npm install -g bats
+      - run: bats -v
 
-    - name: Run Selenium tests  
-      working-directory: /home/runner/work/TestConferenceGuild/Python_projects/python_project_headless/
-      run: |
-        python test_checkbox_headless.py
+      
