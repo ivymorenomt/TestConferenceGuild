@@ -1,8 +1,8 @@
-name: test_checkbox
+name: Run Test Checkbox
 on:
   workflow_dispatch:  
 jobs:
-  test01:
+  test_checkbox:
     runs-on: ubuntu-latest
     steps:
       - name: Check out this repo
