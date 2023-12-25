@@ -1,6 +1,9 @@
 name: Run Test Checkbox
 on:
-  workflow_dispatch:  
+  # workflow_dispatch: #turn this on if you want to run the job manually  
+  push: 
+    branches:
+      - main
 jobs:
   test_checkbox:
     runs-on: ubuntu-latest
