@@ -2,13 +2,19 @@ import json
 import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 class TestLoginPage:
     @classmethod
     def setup_class(cls):
-        cls.driver = webdriver.Chrome()
+        chrome_options = Options()
+        chrome_options.add_argument("--headless")  # This line enables headless mode
+        cls.driver = webdriver.Chrome(options=chrome_options)
+
+
+        # cls.driver = webdriver.Chrome()
 
     def setup_method(self):
         self.base_url = 'https://the-internet.herokuapp.com/login'
