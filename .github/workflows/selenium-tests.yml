@@ -17,8 +17,8 @@ jobs:
           python-version: '3.11'
       # - name: Install software
       #   run: sudo apt-get install -y chromium-browser
-      # - name: Install the necessary packages
-      #   run: pip install requests webdriver-manager selenium pytest
+      - name: Install the necessary packages
+        run: pip install requests webdriver-manager selenium pytest
       - name: Run the PytTest script
         run: pytest -rA
       
