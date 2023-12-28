@@ -14,7 +14,7 @@ class TestLoginPage:
         cls.driver = webdriver.Chrome(options=chrome_options)
 
 
-        # cls.driver = webdriver.Chrome()
+        # cls.driver = webdriver.Chrome() 
 
     def setup_method(self):
         self.base_url = 'https://the-internet.herokuapp.com/login'
