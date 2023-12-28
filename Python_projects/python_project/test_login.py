@@ -10,7 +10,7 @@ class TestLoginPage:
     @classmethod
     def setup_class(cls):
         chrome_options = Options()
-        chrome_options.add_argument("--headless")  # This line enables headless mode
+        # chrome_options.add_argument("--headless")  # This line enables headless mode
         cls.driver = webdriver.Chrome(options=chrome_options)
 
 
