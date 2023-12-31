@@ -5,7 +5,7 @@ from selenium.webdriver.chrome.options import Options
 class TestCheckbox:
     def setup_method(self, method):
         chrome_options = Options()
-        chrome_options.add_argument("--headless") ###
+       ###chrome_options.add_argument("--headless")
         self.driver = webdriver.Chrome(options=chrome_options)
         self.driver.get("https://the-internet.herokuapp.com/checkboxes")
 
