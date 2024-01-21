@@ -10,11 +10,10 @@ class TestLoginPage:
     @classmethod
     def setup_class(cls):
         chrome_options = Options()
-        chrome_options.add_argument("--headless")  # This line enables headless mode
+        # chrome_options.add_argument("--headless")  # This line enables headless mode
         cls.driver = webdriver.Chrome(options=chrome_options)
 
 
-        # cls.driver = webdriver.Chrome() 
 
     def setup_method(self):
         self.base_url = 'https://the-internet.herokuapp.com/login'
@@ -51,7 +50,7 @@ class TestLoginPage:
             # If the login is expected to fail, assert that there is an error message
             error_message_selector = (By.CSS_SELECTOR, '.flash.error')
 
-            try:
+            try: # try and catch explain it how it works - divide by zero scenario
                 # Use an explicit wait to wait for the error message to be visible
                 WebDriverWait(self.driver, 15).until(EC.visibility_of_element_located(error_message_selector))
 

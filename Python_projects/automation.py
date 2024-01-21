@@ -1,4 +1,7 @@
 from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 class GoogleSearchTest:
     def __init__(self):
@@ -7,18 +10,36 @@ class GoogleSearchTest:
 
     def navigate_to_google(self):
         # Navigate to Google.com
-        self.driver.get("https://www.google.com")
+        self.driver.get("https://www.google.com") 
 
     def perform_search(self, search_query):
         # Find the search input element by name attribute
-        search_box = self.driver.find_element("name", "q")
+        search_box = self.driver.find_element(By.NAME, "q")
 
         # Type the search query
         search_box.send_keys(search_query)
 
-        # Find and click the 'Google Search' button
-        search_button = self.driver.find_element("name", "btnK")
+        # Use explicit wait to wait for the 'Google Search' button to be clickable
+        search_button = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.NAME, "btnK"))
+        )
+
+        # Click the 'Google Search' button
         search_button.click()
+
+    def validate_search_results(self, expected_text):
+        # Use explicit wait to wait for the search results to be present
+        WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located((By.ID, "search"))
+        )
+
+        # Get the search results
+        search_results = self.driver.find_elements(By.CSS_SELECTOR, "div.g")
+
+        # Validate each search result
+        for result in search_results:
+            result_text = result.text
+            assert expected_text.lower() in result_text.lower(), f"Expected text not found in result: {result_text}"
 
     def close_browser(self):
         # Close the browser
@@ -30,33 +51,7 @@ google_test = GoogleSearchTest()
 # Execute the test steps
 google_test.navigate_to_google()
 google_test.perform_search("QA Testing Google")
+google_test.validate_search_results("QA Testing")
 
 # Close the browser after the test
 google_test.close_browser()
-
-'''
-Class (GoogleSearchTest):
-
-The class GoogleSearchTest is a blueprint that defines a set of instructions for testing Google search functionality.
-Attributes (self.driver):
-
-self.driver is an attribute of the class. It represents an instance of the Selenium WebDriver (webdriver.Chrome()), allowing interaction with the web browser.
-Methods (__init__, navigate_to_google, perform_search, close_browser):
-
-__init__: This method is a constructor that initializes the class. It creates an instance of the Chrome driver (self.driver) when an object of the class is created.
-navigate_to_google: This method navigates the browser to Google.com.
-perform_search: This method performs a search on Google by locating the search input element, entering a search query, and clicking the 'Google Search' button.
-close_browser: This method closes the browser, releasing resources.
-Object (google_test):
-
-google_test is an object instantiated from the GoogleSearchTest class. It represents a specific test scenario where a user navigates to Google, 
-performs a search, and closes the browser.
-
-Putting It Together:
-
-The class (GoogleSearchTest) provides a structure with methods and attributes for testing Google search functionality.
-The object (google_test) is an instance of the class, representing a specific test case or scenario.
-Methods of the class are applied to the object (google_test) to execute the steps of the test scenario.
-In summary, this code demonstrates the concepts of class, attributes, methods, and objects in the context of testing Google search using Selenium. 
-The class defines the testing instructions, attributes represent elements to interact with, methods perform actions, and the object is an instance of a specific test scenario.
-'''
